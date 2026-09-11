@@ -1,5 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=1920, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>MONCON Antofagasta — Mural de condición · Cbb Cales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,6 +256,11 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
 .cbtn:hover{background:rgba(255,255,255,.22)}
 .cbtn:focus-visible{outline:2px solid #3BD98D;outline-offset:3px}
 .cbtn.nav{font-size:13px}
+.cbtn-week{width:34px;height:34px;cursor:pointer;background:var(--panel);
+  border:1px solid var(--line);border-radius:3px;color:var(--navy);font-size:13px;line-height:1;
+  display:grid;place-items:center;font-family:var(--body)}
+.cbtn-week:hover{background:var(--panel2)}
+.cbtn-week:disabled{opacity:.3;cursor:default;pointer-events:none}
 .paused #pausebtn{border-color:#FFC53D;color:#FFC53D}
 .pager{display:flex;padding:0 22px;flex:none}
 .pager>*{margin-right:7px}
@@ -277,42 +285,46 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
       <div class="sub">Monitoreo de condiciones · Confiabilidad</div>
     </div>
     <div class="hspace"></div>
-    <div class="meta" style="margin-right:28px"><div class="lbl">Semana</div><div class="big" id="semanaTitulo">36 · 2026</div></div>
+    <div class="meta" style="margin-right:28px"><div class="lbl">Semana</div><div style="display:flex;align-items:center">
+      <button id="semAnt" class="cbtn-week" type="button" aria-label="Semana anterior">&#9664;</button>
+      <span id="semanaTitulo" class="big" data-actual="34 · 2026" style="margin:0 10px">34 · 2026</span>
+      <button id="semSig" class="cbtn-week" type="button" aria-label="Semana siguiente">&#9654;</button>
+    </div></div>
     <div class="meta" style="margin-right:28px"><div class="lbl">Plantas</div><div class="big">Cal Afta · MEW</div></div>
     <div class="fresh"><div class="dot" style="margin-right:12px"></div>
       <div class="meta" style="text-align:left">
-        <div class="lbl">Datos al</div><div class="big" style="font-size:29px" id="datosAl">Wed 02 Sep · 10:08</div>
+        <div class="lbl">Datos al</div><div class="big" style="font-size:29px" id="datosAl">mié 19 ago · 06:40</div>
       </div>
     </div>
   </header>
 
   <div class="kpis">
-    <div class="kpi state alerta"><div class="cap">Alerta</div><div class="val">10</div>
-      <div class="foot">en 7 equipos · reportables</div></div>
-    <div class="kpi state alarma"><div class="cap">Alarma</div><div class="val">23</div>
+    <div class="kpi state alerta"><div class="cap">Alerta</div><div class="val" id="kpiAlerta">10</div>
+      <div class="foot" id="kpiAlertaFoot">en 7 equipos · reportables</div></div>
+    <div class="kpi state alarma"><div class="cap">Alarma</div><div class="val" id="kpiAlarma">23</div>
       <div class="foot">según último registro</div></div>
-    <div class="kpi state control"><div class="cap">Control</div><div class="val">3</div>
+    <div class="kpi state control"><div class="cap">Control</div><div class="val" id="kpiControl">3</div>
       <div class="foot">en seguimiento</div></div>
     <div class="kpi">
       <div class="owner mio">Predia</div>
       <div class="cap">Programa crit. A</div>
-      <div class="split"><div class="val">92</div><div class="unit">% en su semana</div></div>
-      <div class="gauge"><i style="width:92.1%;background:#00C165"></i></div>
-      <div class="foot">398 de 432 OT · 98% sumando 27 recuperadas</div>
+      <div class="split"><div class="val" id="kpiCumpl">92</div><div class="unit">% en su semana</div></div>
+      <div class="gauge"><i id="kpiCumplBar" style="width:92.1%;background:#00C165"></i></div>
+      <div class="foot" id="kpiCumplFoot">398 de 432 OT · 98% sumando 27 recuperadas</div>
     </div>
     <div class="kpi">
       <div class="owner ellos">Mtto</div>
       <div class="cap">Avisos sin OT</div>
-      <div class="split"><div class="val">8</div><div class="unit">de 104 creados</div></div>
-      <div class="gauge"><i style="width:92.3%;background:rgba(255,255,255,.85)"></i></div>
-      <div class="foot">92% tomados · el más antiguo espera 99 d</div>
+      <div class="split"><div class="val" id="kpiAvisos">8</div><div class="unit" id="kpiAvisosUnit">de 104 creados</div></div>
+      <div class="gauge"><i id="kpiAvisosBar" style="width:92.3%;background:rgba(255,255,255,.85)"></i></div>
+      <div class="foot" id="kpiAvisosFoot">92% tomados · el más antiguo espera 99 d</div>
     </div>
     <div class="kpi">
       <div class="owner ellos">Mtto</div>
       <div class="cap">Alertas sin OT</div>
-      <div class="split"><div class="val">2</div><div class="unit">de 7 gestionables</div></div>
-      <div class="gauge"><i style="width:71.4%;background:rgba(255,255,255,.85)"></i></div>
-      <div class="foot">71% con OT · 3 alertas en gestión Operaciones</div>
+      <div class="split"><div class="val" id="kpiAlSinOT">2</div><div class="unit" id="kpiAlSinOTUnit">de 7 gestionables</div></div>
+      <div class="gauge"><i id="kpiAlSinOTBar" style="width:71.4%;background:rgba(255,255,255,.85)"></i></div>
+      <div class="foot" id="kpiAlSinOTFoot">71% con OT · 3 alertas en gestión Operaciones</div>
     </div>
   </div>
 
@@ -398,7 +410,7 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
 
     <section class="view" data-t="16000">
       <div class="vhead"><h2>Top 3 de la semana · imágenes de terreno</h2><div class="rule"></div>
-        <div class="hint">lo más relevante que se detectó · semana 33</div></div>
+        <div class="hint" id="top3hint">lo más relevante que se detectó · semana 33</div></div>
       <div class="shots" id="shots"></div>
     </section>
 
@@ -428,7 +440,8 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
 </div>
 
 <script>
-let alertas=[{"tag": "E-VE-301", "eq": "VENTILADOR FM-301 HARNERO PRIMARIO", "comp": "Motor", "crit": "A", "dias": 167, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alarma", "Alerta"], "fecha": "19 mar 2026", "aviso": "10675986", "ot": "51230084"}, {"tag": "E-VE-303", "eq": "VENTILADOR FM-303 HARNERO SECUNDARIO", "comp": "Motor", "crit": "A", "dias": 167, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta"], "fecha": "19 mar 2026", "aviso": "10674531", "ot": "51224444"}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Migración", "crit": "A", "dias": 35, "diag": "Baja migración en casi 0mm", "rec": "cambio de revestimiento interno", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Normal", "Normal", "Normal", "Alerta"], "fecha": "29 jul 2026", "aviso": null, "ot": "OPERACIONES"}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Reductor Principal", "crit": "A", "dias": 34, "diag": "Fuga lubricante eje de alta", "rec": "reparación integral en taller autorizado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10672345", "ot": null}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Descanso Piñón", "crit": "A", "dias": 34, "diag": "desalineamiento piñón / corona", "rec": "Normalizar en mtto. programado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10671340", "ot": null}, {"tag": "E-TP-301", "eq": "TRIPPER STACKER", "comp": "Motor", "crit": "A", "dias": 22, "diag": "Acoplamiento dañado", "rec": "Reemplazo de  acoplamiento y elastómero", "g": "ot", "gl": "OT en proceso", "hist": ["Alarma", "Alarma", "Alarma", "Alerta", "Alerta"], "fecha": "11 ago 2026", "aviso": "10679075", "ot": null}, {"tag": "E-HA-301A", "eq": "HARNERO VIBRATORIO PRIMARIO", "comp": "Masas A", "crit": "A", "dias": 22, "diag": "Soltura interna Harnero", "rec": "Limpieza y reapriete general", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Normal", "Normal", "Alerta"], "fecha": "11 ago 2026", "aviso": "10682317", "ot": "51256380"}, {"tag": "E-HA-301A", "eq": "HARNERO VIBRATORIO PRIMARIO", "comp": "Masas B", "crit": "A", "dias": 22, "diag": "Soltura interna Harnero", "rec": "Limpieza y reapriete general", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Normal", "Normal", "Alerta"], "fecha": "11 ago 2026", "aviso": "10682317", "ot": "51256380"}, {"tag": "E-CT-801", "eq": "CINTA TRANSPORTADORA ALIMENTACIÓN RAYMOND 2 Y 3", "comp": "Motorreductor", "crit": "A", "dias": 21, "diag": "Fuga lub por caja conexión", "rec": "Cambio motorreductor", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "12 ago 2026", "aviso": "10675040", "ot": "51246563"}, {"tag": "E-MO-02-02", "eq": "MOLINO VERTICAL DE RODILLOS LOESCHE", "comp": "Reductor", "crit": "A", "dias": 9, "diag": "Fuga lub pistones", "rec": "reparación / cambio de cilindros estabilizadores", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "24 ago 2026", "aviso": "10682058", "ot": null}],familias=[["Cinta transportadora", 1, 5, 1], ["Ventilador", 2, 5, 0], ["Elevador de capachos", 0, 4, 1], ["Horno rotatorio", 3, 1, 0], ["Harnero", 2, 1, 0], ["Rastra", 0, 3, 0], ["Alimentador vibratorio", 0, 2, 0], ["Precalentador", 0, 2, 0], ["Soplador", 0, 2, 0], ["Molino Vertical", 1, 0, 0], ["Separador", 0, 1, 0], ["Tripper", 1, 0, 0]],semanas=[[19, 46, 1, 0, 0, 100, 100], [20, 62, 0, 3, 1, 100, 100], [21, 38, 3, 2, 2, 100, 100], [22, 33, 0, 5, 1, 100, 100], [23, 35, 0, 1, 1, 100, 100], [24, 38, 0, 3, 0, 100, 100], [26, 28, 0, 3, 2, 100, 100], [27, 32, 0, 3, 2, 100, 100], [28, 66, 0, 3, 1, 88, 88], [29, 0, 0, 0, 0, 0, 0], [30, 43, 0, 3, 2, 100, 100], [31, 77, 0, 4, 3, 100, 100], [32, 57, 2, 3, 3, 100, 100], [33, 58, 0, 2, 4, 100, 100], [35, 36, 1, 3, 1, 100, 100], [36, 0, 0, 0, 0, 0, 0]],aging=[["0 – 30 días", 5], ["31 – 90 días", 5], ["91 – 180 días", 14], ["más de 180 días", 0]],pendientes=[["10676798", "E-VE-558", "Carencia lubricatoria VE-558 descans", 146, 1, "A"], ["10676956", "E-CT-455", "Descanso sin tapa deflec sup CT455", 142, 2, "A"], ["10677164", "E-VE-504", "Puntos de A-AA erróneos VE-504", 139, 1, "A"], ["10677165", "E-VE-558", "Puntos de A-AA erróneos VE-558", 139, 1, "A"], ["10677685", "E-CT-703", "Caja conexiones dañada CT-703", 128, 1, "A"], ["10677684", "E-EC-01-03", "Lubricadores automáticos dañados", 128, 1, "A"], ["10678444", "E-MO-802", "Instalación de Antena Gateway ELEC", 113, 1, "A"], ["10678443", "E-MO-802", "Instalación de Antena Gateway MEC", 113, 1, "A"], ["10678522", "E-MO-802", "Instalación sensores Dynamox", 112, 1, "A"], ["10679076", "E-SO-04-07-08", "Fuga fluído por flange SOP Cal3", 100, 2, "A"], ["10679073", "E-AV-301", "pernos sueltos estructura AV-301", 100, 2, "A"], ["10679074", "E-CH-302", "Fuga sistema hid CH-302", 100, 3, "A"], ["10679075", "E-TP-301", "Daño acoplamiento alta TP-301", 100, 2, "A"], ["10679301", "E-UR-551-01", "desgaste correa VE-UR-551-01", 96, 2, "A"], ["10680366", "E-HO-501", "embrague dañado HO-501", 72, 2, "A"], ["10680364", "E-HO-501", "Alta migración llanta 1 HO-501", 72, 3, "A"], ["10680365", "E-VE-558", "carencia lubricatoria motor VE-558", 72, 2, "A"], ["10680367", "E-AV-301", "Correas sueltas y dañadas AV-301", 72, 2, "A"], ["10680368", "E-AV-301", "tapones suelto/pérdida aceite AV-301", 72, 1, "A"], ["10682058", "E-MO-02-02", "Fuga en HYD-CYLINDER MO-02-02", 28, 2, "A"], ["10682317", "E-HA-301A", "Soltura eje cardánico", 22, 1, "A"], ["10682679", "E-CT-753", "Fuga por conexion eléctrica CT-753", 14, 2, "A"], ["10683271", "E-CT-704", "Fuga por conexion eléctrica CT-704", 1, 2, "A"], ["10683273", "E-SO-04-07-01", "Correa suelta Soplador HCAL2", 1, 2, "A"]],predia=[[24, 10, 10, 0, 0], [26, 11, 11, 0, 0], [27, 14, 14, 0, 0], [28, 16, 14, 0, 2], [30, 16, 16, 0, 0], [31, 30, 30, 0, 0], [32, 16, 16, 0, 0], [33, 16, 16, 0, 0]],alarmas=[["E-UR-551-02", "Motor", 238, "B"], ["E-TR-701", "Polea motriz", 230, "B"], ["E-EC-751", "Motor eléctrico", 230, "B"], ["E-VE-551 (FM)", "Motor", 229, "D"], ["E-VE-551 (FM)", "Descansos", 229, "D"], ["E-EC-703", "Motor eléctrico", 229, "B"], ["E-CT-309", "Reductor Radial 1 Der", 204, "B"], ["E-CT-309", "Reductor Radial 2 Izq", 204, "B"]],top3=[{"tag": "E-EC-01-03", "eq": "ELEVADOR DE CAPACHOS PLANTA CARBÓN", "comp": "Descarga Polvo", "tec": "VISUAL", "est": "Alarma", "lectura": "Rotura ducto por corrosión ~30% de la sección", "pie": "Requiere reparación con soldadura"}, {"tag": "E-MO-02-02", "eq": "MOLINO VERTICAL DE RODILLOS LOESCHE", "comp": "Cilindros estabilizadores", "tec": "VISUAL", "est": "Alerta", "lectura": "Fuga crítica de aceite hidráulico", "pie": "Requiere cambio de cilindros"}, {"tag": "E-SO-04-07-01", "eq": "SOPLADOR AERZEN CAL N°2", "comp": "Transmisión", "tec": "ANÁLISIS DE VIBRACIONES", "est": "Alarma", "lectura": "Correa suelta", "pie": "requiere cambio o tensión de correas"}],noticias=["Programa criticidad A · <b>87%</b> de las OT ejecutadas en su semana · <b>93%</b> con recuperación", "<b>411</b> de 472 OT gestionables hechas cuando correspondía", "<b>26</b> OT ejecutadas fuera de su semana", "<b>35</b> OT no ejecutadas en el año", "<b>24</b> avisos siguen sin OT"];
+let alertas=[{"tag": "E-VE-301", "eq": "Ventilador FM-301 harnero primario", "comp": "Motor", "crit": "A", "dias": 153, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alarma", "Alerta"], "fecha": "19 mar 2026", "aviso": "10675986", "ot": "51230084"}, {"tag": "E-VE-303", "eq": "Ventilador FM-303 harnero secundario", "comp": "Motor", "crit": "A", "dias": 153, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta"], "fecha": "19 mar 2026", "aviso": "10674531", "ot": "51224444"}, {"tag": "E-MO-02-02", "eq": "Molino vertical de rodillos Loesche", "comp": "Reductor", "crit": "A", "dias": 91, "diag": "Fuga lubricante pistones", "rec": "Cambio de cilindros estabilizadores", "g": "sinot", "gl": "Aviso sin OT", "hist": ["Alerta", "Normal", "Alerta", "Alerta", "Alerta"], "fecha": "20 may 2026", "aviso": "10682058", "ot": null}, {"tag": "E-HO-551", "eq": "Horno de cal N°3 rotatorio", "comp": "Migración", "crit": "A", "dias": 21, "diag": "Baja migración, casi 0 mm", "rec": "Cambio de revestimiento interno", "g": "ops", "gl": "Operaciones", "hist": ["Alerta", "Normal", "Normal", "Normal", "Alerta"], "fecha": "29 jul 2026", "aviso": null, "ot": null}, {"tag": "E-HO-551", "eq": "Horno de cal N°3 rotatorio", "comp": "Reductor Principal", "crit": "A", "dias": 20, "diag": "Fuga lubricante eje de alta", "rec": "Reparación integral en taller", "g": "ops", "gl": "Operaciones", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10672345", "ot": null}, {"tag": "E-HO-551", "eq": "Horno de cal N°3 rotatorio", "comp": "Descanso Piñón", "crit": "A", "dias": 20, "diag": "Desalineamiento piñón / corona", "rec": "Normalizar en mtto. programado", "g": "ops", "gl": "Operaciones", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10671340", "ot": null}, {"tag": "E-TP-301", "eq": "Tripper stacker", "comp": "Motor", "crit": "A", "dias": 8, "diag": "Acoplamiento dañado", "rec": "Reemplazo de acoplamiento y elastómero", "g": "sinot", "gl": "Aviso sin OT", "hist": ["Alarma", "Alarma", "Alarma", "Alerta", "Alerta"], "fecha": "11 ago 2026", "aviso": "10679075", "ot": null}, {"tag": "E-HA-301", "eq": "Harnero vibratorio primario", "comp": "Masas A", "crit": "A", "dias": 8, "diag": "Soltura interna del harnero", "rec": "Limpieza y reapriete general", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Normal", "Normal", "Alerta"], "fecha": "11 ago 2026", "aviso": "10682317", "ot": "51256380"}, {"tag": "E-HA-301", "eq": "Harnero vibratorio primario", "comp": "Masas B", "crit": "A", "dias": 8, "diag": "Soltura interna del harnero", "rec": "Limpieza y reapriete general", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Normal", "Normal", "Alerta"], "fecha": "11 ago 2026", "aviso": "10682317", "ot": "51256380"}, {"tag": "E-CT-801", "eq": "Cinta alimentación Raymond 2 y 3", "comp": "Motorreductor", "crit": "A", "dias": 7, "diag": "Fuga lub. por caja de conexión", "rec": "Cambio de motorreductor", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "12 ago 2026", "aviso": "10675040", "ot": "51246563"}], familias=[["Ventilador", 2, 5, 0], ["Horno rotatorio", 3, 1, 0], ["Harnero", 2, 1, 0], ["Cinta transportadora", 1, 4, 1], ["Molino Vertical", 1, 0, 0], ["Tripper", 1, 0, 0], ["Elevador de capachos", 0, 4, 1], ["Rastra", 0, 3, 0], ["Precalentador", 0, 2, 0], ["Alimentador vibratorio", 0, 1, 0], ["Separador", 0, 1, 0], ["Soplador", 0, 1, 1]], semanas=[[17, 38, 1, 3, 2, 100, 100], [18, 30, 0, 2, 7, 100, 100], [19, 46, 1, 0, 0, 100, 100], [20, 62, 0, 3, 1, 100, 100], [21, 38, 3, 2, 2, 100, 100], [22, 33, 0, 5, 1, 100, 100], [23, 35, 0, 1, 1, 100, 100], [24, 38, 0, 3, 0, 100, 100], [26, 28, 0, 3, 2, 100, 100], [27, 32, 0, 3, 2, 100, 100], [28, 66, 0, 3, 1, 88, 88], [29, 0, 0, 0, 0, 0, 0], [30, 43, 0, 3, 2, 100, 100], [31, 77, 0, 4, 3, 100, 100], [32, 57, 2, 3, 3, 100, 100], [33, 58, 0, 2, 4, 100, 100]],
+      aging=[["0 – 30 días", 2], ["31 – 90 días", 5], ["91 – 180 días", 1], ["más de 180 días", 0]], pendientes=[["10678444", "E-MO-802", "Instalación de antena gateway", 99, 1, "A"], ["10679073", "E-AV-301", "Pernos sueltos estructura AV-301", 86, 2, "A"], ["10679074", "E-CH-302", "Fuga sistema hidráulico CH-302", 86, 3, "A"], ["10680364", "E-HO-501", "Alta migración llanta 1 HO-501", 58, 3, "A"], ["10680368", "E-AV-301", "Tapones sueltos / pérdida de aceite AV-301", 58, 1, "A"], ["10680367", "E-AV-301", "Correas sueltas y dañadas AV-301", 58, 2, "A"], ["10682058", "E-MO-02-02", "Fuga en cilindro hidráulico MO-02-02", 14, 2, "A"], ["10682679", "E-CT-753", "Fuga por conexión eléctrica CT-753", 0, 2, "A"]], predia=[[24, 10, 10, 0, 0], [26, 11, 11, 0, 0], [27, 14, 14, 0, 0], [28, 16, 14, 0, 2], [30, 16, 16, 0, 0], [31, 30, 30, 0, 0], [32, 16, 16, 0, 0], [33, 16, 16, 0, 0]], alarmas=[["E-UR-551-02", "Motor", 224, "B"], ["E-TR-701", "Polea motriz", 216, "B"], ["E-EC-751", "Motor eléctrico", 216, "B"], ["E-VE-551 (FM)", "Motor", 215, "D"], ["E-VE-551 (FM)", "Descansos", 215, "D"], ["E-EC-703", "Motor eléctrico", 215, "B"], ["E-CT-309", "Reductor Radial 1 Der", 190, "B"], ["E-CT-309", "Reductor Radial 2 Izq", 190, "B"]], top3=[{"tag": "E-HA-301", "eq": "Harnero vibratorio primario", "comp": "Masas A y B", "tec": "Análisis de vibraciones", "est": "Alerta", "lectura": "Soltura interna · 4 semanas en Normal antes del salto", "pie": "Ambas masas pasaron de Normal a Alerta en una sola medición. OT 51256380 ya generada."}, {"tag": "E-HO-551", "eq": "Horno de cal N°3 rotatorio", "comp": "Migración de llanta", "tec": "Medición de migración", "est": "Alerta", "lectura": "Migración prácticamente en 0 mm", "pie": "Sin migración, la llanta deja de distribuir el desgaste. Requiere cambio de revestimiento interno."}, {"tag": "E-TP-301", "eq": "Tripper stacker", "comp": "Motor", "tec": "Análisis de vibraciones", "est": "Alerta", "lectura": "Acoplamiento dañado · aviso sin OT hace 14 días", "pie": "Tres mediciones en Alarma antes de la Alerta. El aviso 10679075 espera planificación."}], noticias=["Programa criticidad A · <b>92%</b> de las OT ejecutadas en su semana · <b>98%</b> con recuperación", "<b>398</b> de 432 OT gestionables hechas cuando correspondía", "<b>27</b> OT ejecutadas fuera de su semana · atraso mediano de 7 días", "Semana 29 sin cobertura: 15 OT del área Carbón se recuperan en la SEM 35 con apoyo adicional", "Avisos sin OT bajaron de <b>22 a 8</b> · ninguno supera los 100 días", "<b>96</b> de 104 avisos MONCON derivaron en orden de trabajo", "<b>10</b> alertas vigentes en 7 equipos · el horno concentra 3"];
 
 function renderAll(){
 const wall=document.getElementById("wall");
@@ -457,15 +470,17 @@ document.getElementById("alarms").innerHTML = alarmas.map(([t,c,d,cr])=>`
   <div class="ach"><div class="t">${t}</div><div class="c">${c}</div>
     <div class="d">${d} d<i>${cr}</i></div></div>`).join("");
 
-document.getElementById("shots").innerHTML = top3.map((s,i)=>`
+document.getElementById("shots").innerHTML = top3.map((s,i)=>{
+  const ruta = s.carpeta ? `fotos/${s.carpeta}/top${i+1}.jpg` : `fotos/top${i+1}.jpg`;
+  return `
   <figure class="shot">
     <div class="ph">
-      <img class="shotimg" src="fotos/top${i+1}.jpg" alt=""
+      <img class="shotimg" src="${ruta}" alt=""
            onerror="this.style.display='none';this.closest('.ph').classList.add('sinfoto')">
       <div class="est ${s.est}">${s.est}</div>
       <div class="tec">${s.tec}</div>
       <div class="frame"></div>
-      <div class="ico">Foto ${i+1}<b>coloca fotos/top${i+1}.jpg junto al index.html</b></div>
+      <div class="ico">Foto ${i+1}<b>coloca ${ruta}</b></div>
     </div>
     <figcaption class="body">
       <div class="tg">${s.tag}</div>
@@ -474,7 +489,12 @@ document.getElementById("shots").innerHTML = top3.map((s,i)=>`
       <div class="lect">${s.lectura}</div>
       <div class="pie">${s.pie}</div>
     </figcaption>
-  </figure>`).join("");
+  </figure>`;
+}).join("");
+{
+  const th=document.getElementById("top3hint");
+  if(th) th.textContent = "lo más relevante que se detectó · " + (top3[0]?.semana_texto || "");
+}
 
 const maxFam=Math.max(...familias.map(f=>f[1]+f[2]+f[3]));
 document.getElementById("fam").innerHTML = familias.map(([n,alr,alm,ctl])=>{
@@ -555,6 +575,94 @@ document.getElementById("ticker").innerHTML = noticias.join('<em>&#9670;</em>')+
 
 }
 renderAll();
+
+
+/* ══════════════ Selector de semanas ══════════════
+   "historial" lo mantiene generar_mural.py: cada corrida agrega o
+   actualiza la semana que procesó (hasta 12 semanas). Permite saltar
+   entre ellas sin recargar la página. Si el archivo aun no tiene
+   historial (primera vez), el selector solo muestra la semana actual. */
+var historial = {};
+
+const _actual = {
+  alertas, familias, semanas, aging, pendientes, predia, alarmas, top3, noticias,
+  kpis: {
+    alerta: document.getElementById('kpiAlerta')?.textContent,
+    alertaFoot: document.getElementById('kpiAlertaFoot')?.textContent,
+    alarma: document.getElementById('kpiAlarma')?.textContent,
+    control: document.getElementById('kpiControl')?.textContent,
+    cumpl: document.getElementById('kpiCumpl')?.textContent,
+    cumplBar: document.getElementById('kpiCumplBar')?.style.width,
+    cumplFoot: document.getElementById('kpiCumplFoot')?.textContent,
+    avisos: document.getElementById('kpiAvisos')?.textContent,
+    avisosUnit: document.getElementById('kpiAvisosUnit')?.textContent,
+    avisosBar: document.getElementById('kpiAvisosBar')?.style.width,
+    avisosFoot: document.getElementById('kpiAvisosFoot')?.textContent,
+    alSinOT: document.getElementById('kpiAlSinOT')?.textContent,
+    alSinOTUnit: document.getElementById('kpiAlSinOTUnit')?.textContent,
+    alSinOTBar: document.getElementById('kpiAlSinOTBar')?.style.width,
+    alSinOTFoot: document.getElementById('kpiAlSinOTFoot')?.textContent,
+  }
+};
+
+function _aplicarKPIs(k){
+  if(!k) return;
+  const set=(id,val)=>{ const e=document.getElementById(id); if(e && val!=null) e.textContent=val; };
+  set('kpiAlerta',k.alerta); set('kpiAlertaFoot',k.alertaFoot); set('kpiAlarma',k.alarma);
+  set('kpiControl',k.control); set('kpiCumpl',k.cumpl); set('kpiCumplFoot',k.cumplFoot);
+  set('kpiAvisos',k.avisos); set('kpiAvisosUnit',k.avisosUnit); set('kpiAvisosFoot',k.avisosFoot);
+  set('kpiAlSinOT',k.alSinOT); set('kpiAlSinOTUnit',k.alSinOTUnit); set('kpiAlSinOTFoot',k.alSinOTFoot);
+  const b1=document.getElementById('kpiCumplBar'); if(b1 && k.cumplBar) b1.style.width=k.cumplBar;
+  const b2=document.getElementById('kpiAvisosBar'); if(b2 && k.avisosBar) b2.style.width=k.avisosBar;
+  const b3=document.getElementById('kpiAlSinOTBar'); if(b3 && k.alSinOTBar) b3.style.width=k.alSinOTBar;
+}
+
+function cargarSemana(clave){
+  const s = historial[clave]; if(!s) return;
+  alertas=s.alertas; familias=s.familias; semanas=s.semanas; aging=s.aging;
+  pendientes=s.pendientes; predia=s.predia; alarmas=s.alarmas; top3=s.top3; noticias=s.noticias;
+  _aplicarKPIs(s.kpis);
+  const t=document.getElementById('semanaTitulo'); if(t && s.etiqueta) t.textContent=s.etiqueta;
+  const d=document.getElementById('datosAl'); if(d && s.actualizado) d.textContent=s.actualizado;
+  renderAll();
+  if(typeof go === 'function' && typeof idx !== 'undefined') go(idx);
+}
+
+(function(){
+  const claves = Object.keys(historial).sort();           // más vieja primero
+  const btnAnt = document.getElementById('semAnt');
+  const btnSig = document.getElementById('semSig');
+  if(!claves.length || !btnAnt || !btnSig) return;
+  let pos = claves.length - 1;                             // arranca en la semana más reciente
+  // sincroniza los datos visibles con la más reciente del historial, sin
+  // llamar a go(idx): en este punto del script "idx" aún no existe (se
+  // declara más abajo) y tocarla aquí cortaría la ejecución de todo lo
+  // que viene después, incluidos los botones de vista.
+  (function(){
+    const s = historial[claves[pos]]; if(!s) return;
+    alertas=s.alertas; familias=s.familias; semanas=s.semanas; aging=s.aging;
+    pendientes=s.pendientes; predia=s.predia; alarmas=s.alarmas; top3=s.top3; noticias=s.noticias;
+    _aplicarKPIs(s.kpis);
+    const t=document.getElementById('semanaTitulo'); if(t && s.etiqueta) t.textContent=s.etiqueta;
+    const d=document.getElementById('datosAl'); if(d && s.actualizado) d.textContent=s.actualizado;
+    renderAll();
+  })();
+
+  function actualizarBotones(){
+    btnAnt.disabled = pos<=0;
+    btnSig.disabled = pos>=claves.length-1;
+  }
+  btnAnt.addEventListener('click', ()=>{
+    if(pos<=0) return;
+    pos--; cargarSemana(claves[pos]); actualizarBotones();
+  });
+  btnSig.addEventListener('click', ()=>{
+    if(pos>=claves.length-1) return;
+    pos++; cargarSemana(claves[pos]); actualizarBotones();
+  });
+  actualizarBotones();
+})();
+
 
 const views=[...document.querySelectorAll(".view")];
 const pager=document.getElementById("pager");
