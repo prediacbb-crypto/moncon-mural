@@ -237,6 +237,52 @@ header{height:110px;flex:none;display:flex;align-items:center;padding:0 46px;
 .prow .ha{font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .prow .dd{font-family:var(--mono);font-size:18px;font-weight:600}
 
+/* ══ Dynamox · Hornos · Lubricantes ══ */
+.four{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;flex:1;min-height:0}
+.chip{display:inline-flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:13px;
+  letter-spacing:.08em;padding:2px 9px;border-radius:2px;text-transform:uppercase;font-weight:600;flex:none}
+.chip.CAL{background:rgba(35,47,97,.10);color:var(--navy2);border:1px solid rgba(35,47,97,.3)}
+.chip.MEW{background:rgba(0,153,80,.12);color:#0A7C45;border:1px solid rgba(0,153,80,.4)}
+.covrow{display:flex;align-items:center;justify-content:space-around;flex:1}
+.covrow .cv{text-align:center}
+.covrow .cv b{display:block;font-family:var(--disp);font-weight:700;font-size:64px;color:var(--navy);line-height:1}
+.covrow .cv span{font-family:var(--disp);font-size:16px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.eqrow{display:grid;grid-template-columns:1fr 70px 40px;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}
+.eqrow:last-child{border-bottom:0}
+.eqrow .nm{font-family:var(--mono);font-size:15px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.eqrow .n{font-family:var(--mono);font-size:15px;text-align:right;color:var(--muted)}
+.hrow{display:grid;grid-template-columns:110px 1fr 68px;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.hrow:last-child{border-bottom:0}
+.hrow .tg{font-family:var(--mono);font-weight:600;font-size:15px;color:var(--navy)}
+.hrow .df{font-size:13.5px;color:var(--ink);min-width:0}
+.hrow .df small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hrow .es{font-family:var(--disp);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:3px 0;text-align:center;color:#fff}
+.hrow .es.Alerta{background:var(--alerta)} .hrow .es.Alarma{background:var(--alarma)}
+.vazio{color:var(--dim);font-size:14.5px;padding:14px 0}
+.hshots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1.15;min-height:0}
+.hcap{position:absolute;left:0;right:0;bottom:0;background:rgba(5,27,110,.82);color:#fff;
+  font-family:var(--disp);font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;z-index:2}
+.donutwrap{display:flex;align-items:center;justify-content:center;gap:30px;flex:1}
+.donut{width:170px;height:170px;border-radius:50%;position:relative;flex:none}
+.donut .mid{position:absolute;inset:24px;border-radius:50%;background:var(--panel);
+  display:flex;flex-direction:column;align-items:center;justify-content:center}
+.donut .mid b{font-family:var(--disp);font-size:28px;color:var(--navy);line-height:1}
+.donut .mid span{font-family:var(--disp);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.donutleg{display:flex;flex-direction:column}
+.donutleg>*{margin-bottom:9px}
+.donutleg span{display:flex;align-items:center;font-size:15px;color:var(--ink)}
+.donutleg i{width:13px;height:13px;border-radius:3px;display:block;margin-right:9px}
+.donutleg b{margin-left:auto;padding-left:14px;font-family:var(--mono);font-weight:600}
+.tendrow{display:grid;grid-template-columns:56px 1fr 96px;align-items:center;gap:12px}
+.tendrow .tr{height:20px;background:#fff;border:1px solid var(--line);position:relative}
+.tendrow .tr i{position:absolute;top:0;bottom:0;left:0;background:var(--alerta)}
+.lubrow{display:grid;grid-template-columns:56px 108px 1fr 90px;align-items:center;gap:12px;padding:7px 0;border-bottom:1px solid var(--line)}
+.lubrow:last-child{border-bottom:0}
+.lubrow .eq{font-family:var(--mono);font-size:14.5px;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lubrow .cp{font-size:13px;color:var(--ink);min-width:0}
+.lubrow .cp small{display:block;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lubrow .dt{font-family:var(--mono);font-size:12.5px;color:var(--muted);text-align:right}
+
 footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--navy2);
   display:flex;align-items:center;z-index:4;overflow:hidden;color:#fff}
 .tlabel{font-family:var(--disp);font-size:19px;letter-spacing:.18em;text-transform:uppercase;
@@ -325,7 +371,7 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
       <div class="cap">Alertas sin OT</div>
       <div class="split"><div class="val" id="kpiAlSinOT">0</div><div class="unit" id="kpiAlSinOTUnit">de 7 gestionables</div></div>
       <div class="gauge"><i id="kpiAlSinOTBar" style="width:100%;background:rgba(255,255,255,.85)"></i></div>
-      <div class="foot" id="kpiAlSinOTFoot">100% con OT</div>
+      <div class="foot" id="kpiAlSinOTFoot">100% de las alertas ya tiene OT asignada</div>
     </div>
   </div>
 
@@ -415,6 +461,102 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
       <div class="shots" id="shots"></div>
     </section>
 
+    <section class="view" data-t="14000">
+      <div class="vhead"><h2>Dynamox · sensores en línea</h2><div class="rule"></div>
+        <div class="hint">35 sensores fijos · CAL Antofagasta y Minera El Way</div></div>
+      <div class="four">
+        <div class="blk">
+          <h3>Cobertura de sensores</h3>
+          <div class="sublead">Spots con sensor instalado, por planta.</div>
+          <div id="dynCobertura"></div>
+        </div>
+        <div class="blk">
+          <h3>Nivel de batería</h3>
+          <div class="sublead">Sensores por rango de batería, CAL y MEW.</div>
+          <div id="dynBateria" style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly"></div>
+          <div class="leg"><span><i style="background:var(--navy2)"></i>CAL</span><span><i style="background:var(--green)"></i>MEW</span></div>
+        </div>
+        <div class="blk">
+          <h3>Equipos con sensor</h3>
+          <div class="sublead">Los 10 equipos con Dynamox instalado.</div>
+          <div id="dynEquipos" style="flex:1;overflow:hidden"></div>
+        </div>
+        <div class="blk">
+          <h3>Hallazgos vigentes</h3>
+          <div class="sublead">Alerta/Alarma en spots con sensor, cruzado contra BD Modificada.</div>
+          <div id="dynHallazgos" style="flex:1;overflow:hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-t="14000">
+      <div class="vhead"><h2>Hornos de cal · condición</h2><div class="rule"></div>
+        <div class="hint" id="hornoHint">esquema fijo · termografías por campaña</div></div>
+      <div class="hshots">
+        <figure class="shot"><div class="ph">
+          <img class="shotimg" src="fotos/hornos/esquema.jpg" alt=""
+               onerror="this.style.display='none';this.closest('.ph').classList.add('sinfoto')">
+          <div class="frame"></div><div class="ico">Esquema<b>coloca fotos/hornos/esquema.jpg</b></div>
+        </div><figcaption class="body"><div class="tg">Esquema general</div></figcaption></figure>
+        <figure class="shot"><div class="ph">
+          <img class="shotimg" src="fotos/hornos/termo1.jpg" alt=""
+               onerror="this.style.display='none';this.closest('.ph').classList.add('sinfoto')">
+          <div class="frame"></div><div class="ico">Termografía 1<b>coloca fotos/hornos/termo1.jpg</b></div>
+          <div class="hcap" id="hornoFecha1">Termografía: —</div>
+        </div><figcaption class="body"><div class="tg">Termografía 1</div></figcaption></figure>
+        <figure class="shot"><div class="ph">
+          <img class="shotimg" src="fotos/hornos/termo2.jpg" alt=""
+               onerror="this.style.display='none';this.closest('.ph').classList.add('sinfoto')">
+          <div class="frame"></div><div class="ico">Termografía 2<b>coloca fotos/hornos/termo2.jpg</b></div>
+          <div class="hcap" id="hornoFecha2">Termografía: —</div>
+        </div><figcaption class="body"><div class="tg">Termografía 2</div></figcaption></figure>
+      </div>
+      <div class="two" style="flex:.85">
+        <div class="blk">
+          <h3>Componentes con hallazgo</h3>
+          <div class="sublead">Hornos N°2 y N°3, precalentadores, unidad hidráulica y roldanas.</div>
+          <div id="hornoComp" style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly"></div>
+          <div class="leg">
+            <span><i style="background:var(--alerta)"></i>Alerta</span>
+            <span><i style="background:var(--alarma)"></i>Alarma</span>
+            <span><i style="background:var(--control)"></i>Control</span>
+          </div>
+        </div>
+        <div class="blk">
+          <h3>Hallazgos vigentes</h3>
+          <div class="sublead">Última lectura de cada componente de hornos fuera de Normal.</div>
+          <div id="hornoHallazgos" style="flex:1;overflow:hidden"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view" data-t="14000">
+      <div class="vhead"><h2>Lubricantes · análisis de aceite</h2><div class="rule"></div>
+        <div class="hint">CAL Antofagasta y Minera El Way · Mobil Assistance</div></div>
+      <div class="four">
+        <div class="blk">
+          <h3>Estado actual · CAL</h3>
+          <div class="sublead">Último resultado por punto de muestreo.</div>
+          <div id="lubCal" style="flex:1"></div>
+        </div>
+        <div class="blk">
+          <h3>Estado actual · MEW</h3>
+          <div class="sublead">Último resultado por punto de muestreo.</div>
+          <div id="lubMew" style="flex:1"></div>
+        </div>
+        <div class="blk">
+          <h3>Tendencia % Alerta por año</h3>
+          <div class="sublead">Desde 2025 en adelante.</div>
+          <div id="lubTend" style="flex:1;display:flex;flex-direction:column;justify-content:space-evenly"></div>
+        </div>
+        <div class="blk">
+          <h3>Alertas recientes</h3>
+          <div class="sublead">Últimas muestras en estado Alerta.</div>
+          <div id="lubRecientes" style="flex:1;overflow:hidden"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="view" data-t="17000">
       <div class="vhead"><h2>Avisos creados por MONCON que aún no tienen OT</h2><div class="rule"></div>
         <div class="hint">8 de 104 · por criticidad, luego antigüedad · borde = prioridad SAP</div></div>
@@ -441,7 +583,7 @@ footer{position:absolute;left:0;right:0;bottom:0;height:68px;background:var(--na
 </div>
 
 <script>
-let alertas=[{"tag": "E-VE-301", "eq": "VENTILADOR FM-301 HARNERO PRIMARIO", "comp": "Motor", "crit": "A", "dias": 180, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alarma", "Alerta"], "fecha": "19 mar 2026", "aviso": "10675986", "ot": "51230084"}, {"tag": "E-VE-303", "eq": "VENTILADOR FM-303 HARNERO SECUNDARIO", "comp": "Motor", "crit": "A", "dias": 180, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta"], "fecha": "19 mar 2026", "aviso": "10674531", "ot": "51224444"}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Reductor Principal", "crit": "A", "dias": 47, "diag": "Fuga lubricante eje de alta", "rec": "reparación integral en taller autorizado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10672345", "ot": null}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Descanso Piñón", "crit": "A", "dias": 47, "diag": "desalineamiento piñón / corona", "rec": "Normalizar en mtto. programado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10671340", "ot": null}, {"tag": "E-MO-02-02", "eq": "MOLINO VERTICAL DE RODILLOS LOESCHE", "comp": "Reductor", "crit": "A", "dias": 22, "diag": "Fuga lub pistones", "rec": "reparación / cambio de cilindros estabilizadores", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "24 ago 2026", "aviso": "10682058", "ot": null}, {"tag": "E-TP-301", "eq": "TRIPPER STACKER", "comp": "Reductor", "crit": "A", "dias": 7, "diag": "daño ventilador reductor", "rec": "revisar ventilador e interior reductor", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Alerta", "Normal", "Alerta"], "fecha": "08 sep 2026", "aviso": "10683812", "ot": null}, {"tag": "E-CT-801", "eq": "CINTA TRANSPORTADORA ALIMENTACIÓN RAYMOND 2 Y 3", "comp": "Motorreductor", "crit": "A", "dias": -2, "diag": "Fuga lub por caja conexión", "rec": "Cambio motorreductor", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "17 sep 2026", "aviso": "10675040", "ot": "51246563"}],familias=[["Ventilador", 2, 5, 0], ["Cinta transportadora", 1, 5, 0], ["Elevador de capachos", 0, 4, 1], ["Alimentador vibratorio", 0, 4, 0], ["Horno rotatorio", 2, 1, 0], ["Rastra", 0, 3, 0], ["Molino Vertical", 1, 1, 0], ["Soplador", 0, 2, 0], ["Chancador", 0, 1, 0], ["Harnero", 0, 1, 0], ["Separador", 0, 1, 0], ["Tripper", 1, 0, 0]],semanas=[[22, 33, 0, 5, 1, 100, 100], [23, 35, 0, 1, 1, 100, 100], [24, 38, 0, 3, 0, 100, 100], [26, 28, 0, 3, 2, 100, 100], [27, 32, 0, 3, 2, 100, 100], [28, 66, 0, 3, 1, 88, 88], [29, 0, 0, 0, 0, 0, 0], [30, 43, 0, 3, 2, 100, 100], [31, 77, 0, 4, 3, 100, 100], [32, 57, 2, 3, 3, 100, 100], [33, 58, 0, 2, 4, 100, 100], [34, 0, 0, 0, 0, 0, 100], [35, 35, 1, 4, 1, 100, 100], [36, 34, 0, 1, 0, 100, 100], [37, 37, 0, 4, 1, 56, 100], [38, 24, 0, 1, 1, 0, 0]],aging=[["0 – 30 días", 7], ["31 – 90 días", 3], ["91 – 180 días", 4], ["más de 180 días", 5]],pendientes=[["10671340", "E-HO-551", "Desalineamiento piñón corona", 256, 3, "A"], ["10670566", "E-UR-551-01", "Desgaste ductos enfriador HCAL3", 256, 3, "A"], ["10672349", "E-TR-551", "Fuga Lub. motorreductor TR-551", 246, 3, "A"], ["10674579", "E-VE-301", "Caja conexión dañada VE-301", 204, 2, "A"], ["10674578", "E-VE-302", "Caja conexión dañada VE-302", 204, 2, "A"], ["10675988", "E-CT-302", "Desgaste manto polea deflec CT302", 175, 3, "A"], ["10676632", "E-VE-651", "Falla rodamiento E2 descanso VE-651", 162, 2, "A"], ["10679073", "E-AV-301", "pernos sueltos estructura AV-301", 113, 2, "A"], ["10679074", "E-CH-302", "Fuga sistema hid CH-302", 113, 3, "A"], ["10680368", "E-AV-301", "tapones suelto/pérdida aceite AV-301", 85, 1, "A"], ["10680367", "E-AV-301", "Correas sueltas y dañadas AV-301", 85, 2, "A"], ["10682058", "E-MO-02-02", "Fuga en HYD-CYLINDER MO-02-02", 41, 2, "A"], ["10682679", "E-CT-753", "Fuga por conexion eléctrica CT-753", 27, 2, "A"], ["10683271", "E-CT-704", "Fuga por conexion eléctrica CT-704", 14, 2, "A"], ["10683273", "E-SO-04-07-01", "Correa suelta Soplador HCAL2", 14, 2, "A"], ["10683721", "E-HO-501", "Fuga por protección Corona HO-501", 6, 2, "A"], ["10683750", "E-MO-802", "Fuga retén inferior molino MO-802", 5, 2, "A"], ["10683811", "E-CH-301", "Correa suelta Chancador CH-301", 4, 2, "A"], ["10683812", "E-TP-301", "Daño ventilador/reductor TP-301", 4, 2, "A"]],predia=[[24, 10, 10, 0, 0], [26, 11, 11, 0, 0], [27, 14, 14, 0, 0], [28, 16, 14, 0, 2], [30, 16, 16, 0, 0], [31, 30, 30, 0, 0], [32, 16, 16, 0, 0], [33, 16, 16, 0, 0]],alarmas=[["E-UR-551-02", "Motor", 251, "B"], ["E-TR-701", "Polea motriz", 243, "B"], ["E-EC-751", "Motor eléctrico", 243, "B"], ["E-VE-551 (FM)", "Motor", 242, "D"], ["E-VE-551 (FM)", "Descansos", 242, "D"], ["E-EC-703", "Motor eléctrico", 242, "B"], ["E-CT-309", "Reductor Radial 1 Der", 217, "B"], ["E-CT-309", "Reductor Radial 2 Izq", 217, "B"]],top3=[{"tag": "E-AV-301", "eq": "ALIMENTADOR GRIZZLY CHANCADO PRIMARIO", "comp": "Transmisión", "tec": "ANÁLISIS DE VIBRACIONES", "est": "Alarma", "lectura": "Correa suelta", "pie": "requiere cambio o tensión de correas", "carpeta": "2026-37", "foto": 1, "semana_texto": "semana 37"}, {"tag": "E-AV-301", "eq": "ALIMENTADOR GRIZZLY CHANCADO PRIMARIO", "comp": "Transmisión", "tec": "VISUAL", "est": "Alarma", "lectura": "Fuga crítica por despiche de aceite alimentador", "pie": "se requiere limpiar y reapretar", "carpeta": "2026-37", "foto": 2, "semana_texto": "semana 37"}, {"tag": "E-CH-301", "eq": "CHANCADOR DE MANDIBULAS PRIMARIO", "comp": "Transmisión", "tec": "VISUAL", "est": "Alarma", "lectura": "Correa suelta transmisión chancador", "pie": "se requiere inspeccionar y cambiar", "carpeta": "2026-37", "foto": 3, "semana_texto": "semana 37"}],noticias=["TODAS LAS SOLICITUDES AL ÁREA PREDICTIVA DEBEN LLEVAR AVISO Y OT ANTES DE REALIZAR LA ACTIVIDAD", "Programa criticidad A · <b>86%</b> de las OT ejecutadas en su semana · <b>93%</b> con recuperación", "<b>432</b> de 503 OT gestionables hechas cuando correspondía", "<b>34</b> OT ejecutadas fuera de su semana", "<b>37</b> OT no ejecutadas en el año", "<b>19</b> avisos siguen sin OT"];
+let alertas=[{"tag": "E-VE-301", "eq": "VENTILADOR FM-301 HARNERO PRIMARIO", "comp": "Motor", "crit": "A", "dias": 180, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alarma", "Alerta"], "fecha": "19 mar 2026", "aviso": "10675986", "ot": "51230084"}, {"tag": "E-VE-303", "eq": "VENTILADOR FM-303 HARNERO SECUNDARIO", "comp": "Motor", "crit": "A", "dias": 180, "diag": "Desbalanceo rodete", "rec": "Reparación mayor y balanceo", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta"], "fecha": "19 mar 2026", "aviso": "10674531", "ot": "51224444"}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Reductor Principal", "crit": "A", "dias": 47, "diag": "Fuga lubricante eje de alta", "rec": "reparación integral en taller autorizado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10672345", "ot": null}, {"tag": "E-HO-551", "eq": "HORNO DE CAL N°3 ROTATORIO", "comp": "Descanso Piñón", "crit": "A", "dias": 47, "diag": "desalineamiento piñón / corona", "rec": "Normalizar en mtto. programado", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "30 jul 2026", "aviso": "10671340", "ot": null}, {"tag": "E-MO-02-02", "eq": "MOLINO VERTICAL DE RODILLOS LOESCHE", "comp": "Reductor", "crit": "A", "dias": 22, "diag": "Fuga lub pistones", "rec": "reparación / cambio de cilindros estabilizadores", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "24 ago 2026", "aviso": "10682058", "ot": null}, {"tag": "E-TP-301", "eq": "TRIPPER STACKER", "comp": "Reductor", "crit": "A", "dias": 7, "diag": "daño ventilador reductor", "rec": "revisar ventilador e interior reductor", "g": "ot", "gl": "OT en proceso", "hist": ["Normal", "Normal", "Alerta", "Normal", "Alerta"], "fecha": "08 sep 2026", "aviso": "10683812", "ot": null}, {"tag": "E-CT-801", "eq": "CINTA TRANSPORTADORA ALIMENTACIÓN RAYMOND 2 Y 3", "comp": "Motorreductor", "crit": "A", "dias": -2, "diag": "Fuga lub por caja conexión", "rec": "Cambio motorreductor", "g": "ot", "gl": "OT en proceso", "hist": ["Alerta", "Alerta", "Alerta", "Alerta", "Alerta"], "fecha": "17 sep 2026", "aviso": "10675040", "ot": "51246563"}],familias=[["Ventilador", 2, 5, 0], ["Cinta transportadora", 1, 5, 0], ["Elevador de capachos", 0, 4, 1], ["Alimentador vibratorio", 0, 4, 0], ["Horno rotatorio", 2, 1, 0], ["Rastra", 0, 3, 0], ["Molino Vertical", 1, 1, 0], ["Soplador", 0, 2, 0], ["Chancador", 0, 1, 0], ["Harnero", 0, 1, 0], ["Separador", 0, 1, 0], ["Tripper", 1, 0, 0]],semanas=[[22, 33, 0, 5, 1, 100, 100], [23, 35, 0, 1, 1, 100, 100], [24, 38, 0, 3, 0, 100, 100], [26, 28, 0, 3, 2, 100, 100], [27, 32, 0, 3, 2, 100, 100], [28, 66, 0, 3, 1, 88, 88], [29, 0, 0, 0, 0, 0, 0], [30, 43, 0, 3, 2, 100, 100], [31, 77, 0, 4, 3, 100, 100], [32, 57, 2, 3, 3, 100, 100], [33, 58, 0, 2, 4, 100, 100], [34, 0, 0, 0, 0, 0, 100], [35, 35, 1, 4, 1, 100, 100], [36, 34, 0, 1, 0, 100, 100], [37, 37, 0, 4, 1, 56, 100], [38, 24, 0, 1, 1, 0, 0]],aging=[["0 – 30 días", 7], ["31 – 90 días", 3], ["91 – 180 días", 4], ["más de 180 días", 5]],pendientes=[["10671340", "E-HO-551", "Desalineamiento piñón corona", 256, 3, "A"], ["10670566", "E-UR-551-01", "Desgaste ductos enfriador HCAL3", 256, 3, "A"], ["10672349", "E-TR-551", "Fuga Lub. motorreductor TR-551", 246, 3, "A"], ["10674579", "E-VE-301", "Caja conexión dañada VE-301", 204, 2, "A"], ["10674578", "E-VE-302", "Caja conexión dañada VE-302", 204, 2, "A"], ["10675988", "E-CT-302", "Desgaste manto polea deflec CT302", 175, 3, "A"], ["10676632", "E-VE-651", "Falla rodamiento E2 descanso VE-651", 162, 2, "A"], ["10679073", "E-AV-301", "pernos sueltos estructura AV-301", 113, 2, "A"], ["10679074", "E-CH-302", "Fuga sistema hid CH-302", 113, 3, "A"], ["10680368", "E-AV-301", "tapones suelto/pérdida aceite AV-301", 85, 1, "A"], ["10680367", "E-AV-301", "Correas sueltas y dañadas AV-301", 85, 2, "A"], ["10682058", "E-MO-02-02", "Fuga en HYD-CYLINDER MO-02-02", 41, 2, "A"], ["10682679", "E-CT-753", "Fuga por conexion eléctrica CT-753", 27, 2, "A"], ["10683271", "E-CT-704", "Fuga por conexion eléctrica CT-704", 14, 2, "A"], ["10683273", "E-SO-04-07-01", "Correa suelta Soplador HCAL2", 14, 2, "A"], ["10683721", "E-HO-501", "Fuga por protección Corona HO-501", 6, 2, "A"], ["10683750", "E-MO-802", "Fuga retén inferior molino MO-802", 5, 2, "A"], ["10683811", "E-CH-301", "Correa suelta Chancador CH-301", 4, 2, "A"], ["10683812", "E-TP-301", "Daño ventilador/reductor TP-301", 4, 2, "A"]],predia=[[24, 10, 10, 0, 0], [26, 11, 11, 0, 0], [27, 14, 14, 0, 0], [28, 16, 14, 0, 2], [30, 16, 16, 0, 0], [31, 30, 30, 0, 0], [32, 16, 16, 0, 0], [33, 16, 16, 0, 0]],alarmas=[["E-UR-551-02", "Motor", 251, "B"], ["E-TR-701", "Polea motriz", 243, "B"], ["E-EC-751", "Motor eléctrico", 243, "B"], ["E-VE-551 (FM)", "Motor", 242, "D"], ["E-VE-551 (FM)", "Descansos", 242, "D"], ["E-EC-703", "Motor eléctrico", 242, "B"], ["E-CT-309", "Reductor Radial 1 Der", 217, "B"], ["E-CT-309", "Reductor Radial 2 Izq", 217, "B"]],top3=[{"tag": "E-AV-301", "eq": "ALIMENTADOR GRIZZLY CHANCADO PRIMARIO", "comp": "Transmisión", "tec": "ANÁLISIS DE VIBRACIONES", "est": "Alarma", "lectura": "Correa suelta", "pie": "requiere cambio o tensión de correas", "carpeta": "2026-37", "foto": 1, "semana_texto": "semana 37"}, {"tag": "E-AV-301", "eq": "ALIMENTADOR GRIZZLY CHANCADO PRIMARIO", "comp": "Transmisión", "tec": "VISUAL", "est": "Alarma", "lectura": "Fuga crítica por despiche de aceite alimentador", "pie": "se requiere limpiar y reapretar", "carpeta": "2026-37", "foto": 2, "semana_texto": "semana 37"}, {"tag": "E-CH-301", "eq": "CHANCADOR DE MANDIBULAS PRIMARIO", "comp": "Transmisión", "tec": "VISUAL", "est": "Alarma", "lectura": "Correa suelta transmisión chancador", "pie": "se requiere inspeccionar y cambiar", "carpeta": "2026-37", "foto": 3, "semana_texto": "semana 37"}],noticias=["TODAS LAS SOLICITUDES AL ÁREA PREDICTIVA DEBEN LLEVAR AVISO Y OT ANTES DE REALIZAR LA ACTIVIDAD", "Programa criticidad A · <b>86%</b> de las OT ejecutadas en su semana · <b>93%</b> con recuperación", "<b>432</b> de 503 OT gestionables hechas cuando correspondía", "<b>34</b> OT ejecutadas fuera de su semana", "<b>37</b> OT no ejecutadas en el año", "<b>19</b> avisos siguen sin OT"],dynamox={"cobertura": {"cal": 17, "mew": 18}, "bateria": [["31 - 50%", 2, 1], ["51 - 70%", 3, 2], ["71 - 90%", 6, 7], ["91 - 100%", 6, 8]], "equipos": [["E-AV-301", "MEW", 1], ["E-CH-301", "MEW", 5], ["E-CH-302", "MEW", 2], ["E-HA-301A", "MEW", 7], ["E-HA-302", "MEW", 3], ["E-HO-501", "CAL", 3], ["E-MO-802", "CAL", 3], ["E-VE-504", "CAL", 4], ["E-VE-558", "CAL", 4], ["EC-752", "CAL", 3]], "hallazgos": [{"tag": "E-HO-501", "comp": "Motor LA", "estado": "Alarma", "dias": 12, "diag": "Nivel de vibración elevado"}]},hornos={"componentes": [["Reductor Principal", 1, 1, 0], ["Migración", 0, 1, 0], ["Descanso Piñón", 0, 1, 0]], "hallazgos": [{"tag": "E-HO-551", "comp": "Reductor Principal", "estado": "Alerta", "dias": 47, "diag": "Fuga lubricante eje de alta"}], "fechaTermo": "26 sep 2026"},lubricantes={"tortaCal": [["Normal", 9], ["Precaución", 5], ["Alerta", 3]], "tortaMew": [["Normal", 7], ["Precaución", 6], ["Alerta", 4]], "tendencia": [[2025, 22, 80], [2026, 28, 64]], "recientes": [{"planta": "CAL", "equipo": "E-CH-301", "comp": "Reductor", "lub": "Mobil SHC 630", "fecha": "12 sep 2026", "coment": "Alta viscosidad, revisar contaminación"}]};
 
 function renderAll(){
 const wall=document.getElementById("wall");
@@ -581,7 +723,117 @@ document.getElementById("pendB").innerHTML = pendientes.slice(mitad).map(prow).j
 
 document.getElementById("ticker").innerHTML = noticias.join('<em>&#9670;</em>')+'<em>&#9670;</em>';
 
+renderDynamox(); renderHornos(); renderLubricantes();
 }
+
+function renderDynamox(){
+  const cCob=document.getElementById("dynCobertura");
+  const cBat=document.getElementById("dynBateria");
+  const cEq=document.getElementById("dynEquipos");
+  const cHal=document.getElementById("dynHallazgos");
+  if(!cCob) return;
+  if(!dynamox){
+    cCob.innerHTML='<div class="vazio">Aún no hay hoja "Dynamox" en el Excel</div>';
+    cBat.innerHTML=''; cEq.innerHTML=''; cHal.innerHTML='';
+    return;
+  }
+  const cob=dynamox.cobertura||{cal:0,mew:0};
+  cCob.innerHTML=`<div class="covrow">
+    <div class="cv"><b>${cob.cal||0}</b><span>CAL</span></div>
+    <div class="cv"><b>${cob.mew||0}</b><span>MEW</span></div>
+    <div class="cv"><b>${(cob.cal||0)+(cob.mew||0)}</b><span>Total</span></div>
+  </div>`;
+
+  const bat=dynamox.bateria||[];
+  const maxBat=Math.max(1,...bat.map(b=>b[1]+b[2]));
+  cBat.innerHTML = bat.length ? bat.map(([r,cal,mew])=>{
+    const w=v=>v/maxBat*100;
+    return `<div class="bar"><div class="nm">${r}</div><div class="tr">
+      <i style="left:0;width:${w(cal)}%;background:var(--navy2)"></i>
+      <i style="left:${w(cal)}%;width:${w(mew)}%;background:var(--green)"></i>
+    </div><div class="n">${cal+mew}</div></div>`;
+  }).join("") : '<div class="vazio">Sin datos de batería</div>';
+
+  const eq=dynamox.equipos||[];
+  cEq.innerHTML = eq.length ? eq.map(([tag,planta,n])=>`
+    <div class="eqrow"><div class="nm">${tag}</div><span class="chip ${planta}">${planta}</span><div class="n">${n}</div></div>`).join("")
+    : '<div class="vazio">Sin equipos cargados</div>';
+
+  const hal=dynamox.hallazgos||[];
+  cHal.innerHTML = hal.length ? hal.map(h=>`
+    <div class="hrow"><div class="tg">${h.tag}</div><div class="df">${h.comp}<small>${h.diag||''}</small></div>
+    <div class="es ${h.estado}">${h.estado}</div></div>`).join("")
+    : '<div class="vazio">Sin hallazgos vigentes en spots con sensor</div>';
+}
+
+function renderHornos(){
+  const f1=document.getElementById("hornoFecha1"), f2=document.getElementById("hornoFecha2");
+  const cComp=document.getElementById("hornoComp"), cHal=document.getElementById("hornoHallazgos");
+  const fecha = hornos && hornos.fechaTermo ? hornos.fechaTermo : '—';
+  if(f1) f1.textContent = "Termografía: "+fecha;
+  if(f2) f2.textContent = "Termografía: "+fecha;
+  if(!cComp) return;
+  if(!hornos){
+    cComp.innerHTML='<div class="vazio">Sin hallazgos de hornos esta semana</div>'; cHal.innerHTML=''; return;
+  }
+  const comps=hornos.componentes||[];
+  const maxC=Math.max(1,...comps.map(c=>c[1]+c[2]+c[3]));
+  cComp.innerHTML = comps.length ? comps.map(([n,alr,alm,ctl])=>{
+    const w=v=>v/maxC*100;
+    return `<div class="bar"><div class="nm">${n}</div><div class="tr">
+      <i style="left:0;width:${w(alr)}%;background:var(--alerta)"></i>
+      <i style="left:${w(alr)}%;width:${w(alm)}%;background:var(--alarma)"></i>
+      <i style="left:${w(alr+alm)}%;width:${w(ctl)}%;background:var(--control)"></i>
+    </div><div class="n">${alr+alm+ctl}</div></div>`;
+  }).join("") : '<div class="vazio">Sin componentes fuera de Normal</div>';
+
+  const hal=hornos.hallazgos||[];
+  cHal.innerHTML = hal.length ? hal.map(h=>`
+    <div class="hrow"><div class="tg">${h.tag}</div><div class="df">${h.comp}<small>${h.diag||''}</small></div>
+    <div class="es ${h.estado}">${h.estado}</div></div>`).join("")
+    : '<div class="vazio">Sin hallazgos vigentes en hornos</div>';
+}
+
+function donutHTML(datos){
+  const colors={"Normal":"var(--normal)","Precaución":"var(--control)","Alerta":"var(--alerta)"};
+  const total=datos.reduce((s,d)=>s+d[1],0);
+  if(!total) return '<div class="vazio">Sin muestras</div>';
+  let acc=0;
+  const stops=datos.map(([n,v])=>{
+    const p0=acc/total*100; acc+=v; const p1=acc/total*100;
+    return `${colors[n]||'var(--dim)'} ${p0}% ${p1}%`;
+  }).join(",");
+  const leg=datos.map(([n,v])=>`<span><i style="background:${colors[n]||'var(--dim)'}"></i>${n}<b>${v}</b></span>`).join("");
+  return `<div class="donutwrap">
+    <div class="donut" style="background:conic-gradient(${stops})"><div class="mid"><b>${total}</b><span>muestras</span></div></div>
+    <div class="donutleg">${leg}</div>
+  </div>`;
+}
+
+function renderLubricantes(){
+  const cCal=document.getElementById("lubCal"), cMew=document.getElementById("lubMew");
+  const cTend=document.getElementById("lubTend"), cRec=document.getElementById("lubRecientes");
+  if(!cCal) return;
+  if(!lubricantes){
+    cCal.innerHTML='<div class="vazio">Aún no hay hoja "Lubricantes" en el Excel</div>';
+    cMew.innerHTML=''; cTend.innerHTML=''; cRec.innerHTML=''; return;
+  }
+  cCal.innerHTML = donutHTML(lubricantes.tortaCal||[]);
+  cMew.innerHTML = donutHTML(lubricantes.tortaMew||[]);
+
+  const tend=lubricantes.tendencia||[];
+  cTend.innerHTML = tend.length ? tend.map(([anio,pct,total])=>`
+    <div class="tendrow"><div class="nm">${anio}</div><div class="tr"><i style="width:${pct}%"></i></div>
+    <div class="n">${pct}% <span style="color:var(--dim);font-weight:400">(${total})</span></div></div>`).join("")
+    : '<div class="vazio">Sin datos suficientes (2025 en adelante)</div>';
+
+  const rec=lubricantes.recientes||[];
+  cRec.innerHTML = rec.length ? rec.map(r=>`
+    <div class="lubrow"><span class="chip ${r.planta}">${r.planta}</span><div class="eq">${r.equipo}</div>
+    <div class="cp">${r.comp} · ${r.lub}<small>${r.coment||''}</small></div><div class="dt">${r.fecha}</div></div>`).join("")
+    : '<div class="vazio">Sin alertas recientes</div>';
+}
+
 renderAll();
 
 
@@ -629,6 +881,7 @@ function cargarSemana(clave){
   const s = historial[clave]; if(!s) return;
   alertas=s.alertas; familias=s.familias; semanas=s.semanas; aging=s.aging;
   pendientes=s.pendientes; predia=s.predia; alarmas=s.alarmas; top3=s.top3; noticias=s.noticias;
+  dynamox=s.dynamox||null; hornos=s.hornos||null; lubricantes=s.lubricantes||null;
   _aplicarKPIs(s.kpis);
   const t=document.getElementById('semanaTitulo'); if(t && s.etiqueta) t.textContent=s.etiqueta;
   const d=document.getElementById('datosAl'); if(d && s.actualizado) d.textContent=s.actualizado;
@@ -650,6 +903,7 @@ function cargarSemana(clave){
     const s = historial[claves[pos]]; if(!s) return;
     alertas=s.alertas; familias=s.familias; semanas=s.semanas; aging=s.aging;
     pendientes=s.pendientes; predia=s.predia; alarmas=s.alarmas; top3=s.top3; noticias=s.noticias;
+    dynamox=s.dynamox||null; hornos=s.hornos||null; lubricantes=s.lubricantes||null;
     _aplicarKPIs(s.kpis);
     const t=document.getElementById('semanaTitulo'); if(t && s.etiqueta) t.textContent=s.etiqueta;
     const d=document.getElementById('datosAl'); if(d && s.actualizado) d.textContent=s.actualizado;
